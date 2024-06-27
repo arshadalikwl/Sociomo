@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+    ServerName https://ifnets.co.za
+    DocumentRoot /home/edukaysc/public_html
+
+    <Directory /home/edukaysc/public_html>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    <IfModule mod_rewrite.c>
+        <Directory /home/edukaysc/public_html>
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            RewriteRule ^ index.php [L]
+        </Directory>
+    </IfModule>
+</VirtualHost>
